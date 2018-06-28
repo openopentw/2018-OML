@@ -1,0 +1,78 @@
+<html><head>  </head>
+      <body> <h1>Optimization and Machine Learning - HW7</h1><div class="subtitle"><div>b04902053 鄭淵仁</div><div>June 28, 2018</div></div><h2>Environment</h2><div><ul><li><b>OS:</b> CSIE Workstation (Archlinux)</li><li><b>Programming Language:</b> Matlab R2018a</li></ul></div><h2>Results</h2><h3>Timing</h3><div><table><thead><tr><th>Gradient Descent</th><th>Newton Method</th><th>LIBLINEAR</th></tr></thead><tbody><tr><td>44m41.889s</td><td>10m45.581s</td><td>21m19.126s</td></tr></tbody></table><p>As you can see in the table, the Newton Method is the fastest. LIBLINEAR runs the second. And Gradient Descent is far slower than the two.</p><p>I think that's because Newton Method is written in Matlab, which has been studying the matrix computation for many years. While LIBLINEAR is written in C.</p><p>Moreover, Matlab may use parallel programming to speed up the computation, while the LIBLINEAR which I download is the single thread version. Therefore, there is no surprise that Newton Method is faster than LIBLINEAR.</p><p>Finally, Gradient Descent does not always determining the best direction, so it is far slower than the other two method.</p></div><div style="page-break-before:always"></div><h3>Loss</h3><div><table><thead><tr><th>Loss of Gradient Descent</th><th>Loss of Newton Method</th></tr></thead><tbody><tr><td><div class="img"><img src="./assets/images/GD_loss.png" style="width:100%"></div></td><td><div class="img"><img src="./assets/images/NM_loss.png" style="width:100%"></div></td></tr></tbody><thead><tr><th>Loss of LIBLINEAR</th></tr></thead><tbody><tr><td><div class="img"><img src="./assets/images/LIBLINEAR_loss.png" style="width:100%"></div></td></tr></tbody></table><p>From the above graphs, we can find that the loss of LIBLINEAR is the smallest. And that of Newton Method is larger than LIBLINEAR. While the loss of Gradient Descent is far larger than the other two.</p><p>I think that may be because that trust region causes less numerical error than conjugate gradient. Besides, my implementation may cause more errors because I am not an expert in numerical.</p></div><div style="page-break-before:always"></div><h3>Norm of Gradient</h3><div><table><thead><tr><th>Norm of Gradient of the first 30 iterations of Gradient Descent</th><th>Norm of Gradient of the last 30 iterations of Gradient Descent</th></tr></thead><tbody><tr><td><div class="img"><img src="./assets/images/GD_norm of gradient_at first.png" style="width:100%"></div></td><td><div class="img"><img src="./assets/images/GD_norm of gradient_at last.png" style="width:100%"></div></td></tr></tbody><thead><tr><th>Norm of Gradient of Newton Method</th><th>Norm of Gradient of LIBLINEAR</th></tr></thead><tbody><tr><td><div class="img"><img src="./assets/images/NM_norm of gradient.png" style="width:100%"></div></td><td><div class="img"><img src="./assets/images/LIBLINEAR_norm of gradient.png" style="width:100%"></div></td></tr></tbody></table><p>I find that the norms of gradients of the Gradient Descent do not fluently decrease, while the others decline steady.</p><p>I think this shows that Gradient Descent does not always choose a better direction in comparison to the other two methods (that is, Gradient Descent always regret the direction that it has chosen before). Therefore, Newton Method is far slower than the other two.</p></div><div style="page-break-before:always"></div><h3>Alpha of Newton Method</h3><div><div class="img"><img src="./assets/images/NM_iter of alpha.png" style="width: 50%"></div><p>As you can see in the graph, the alphas of Newton Method are always 1, just as the slides say.</p></div><h2>Conclusion</h2><div><ol><li>Newton Method written in Matlab is faster than LIBLINEAR, while LIBLINEAR is more accurate than Newton Method.</li><li>Matlab may be faster than C because of the algorithm behind matrix computation (such as parallel programming.)</li><li>Trust region may cause less numerical error than conjugate gradient. And the algorithm written by me may make the error larger.</li><li>Gradient Descent does not always choose a better direction in comparison to the other two methods. Therefore, Newton Method is far slower than the other two.</li></ol></div><template id="page-header"><div></div></template><template id="page-footer"><style type="text/css">.pdfheader {
+  width: 1000px;
+  text-align: center;
+  margin-bottom: 5px;
+
+  font-size: 12px;
+  color: #aaa;
+  font-family: "CMU Serif", "Times New Roman", "標楷體", "微軟正黑體";
+  font-weight: bold;
+}
+</style><div class="pdfheader"><span class="pageNumber"></span></div></template><style>@charset "UTF-8";
+@import 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css';
+/* page */
+@page {
+  margin: 2cm; }
+
+/* overall */
+html {
+  font-family: "CMU Serif", "Times New Roman", "標楷體", "微軟正黑體"; }
+
+/* titles */
+h1 {
+  font-weight: normal; }
+
+h1 {
+  text-align: center;
+  margin-top: 3em;
+  font-size: 1.8em; }
+
+h2 {
+  margin-top: 1em; }
+
+/* subtitle */
+div.subtitle {
+  margin-bottom: 3em; }
+  div.subtitle div {
+    font-size: 1.2em;
+    text-align: center;
+    margin: 0.7em; }
+
+/* img */
+div.img {
+  text-align: center; }
+  div.img img {
+    width: 50%; }
+
+/* paragraph */
+p {
+  text-indent: 2em; }
+
+/* list */
+ul {
+  margin-bottom: 1em; }
+  ul li {
+    margin: 0.5em 0; }
+
+/* codes */
+pre {
+  border: 1px solid #aaa;
+  padding: 5px;
+  font-size: 1.2em;
+  page-break-inside: avoid; }
+
+/* table */
+table {
+  margin: 0 auto;
+  border-collapse: collapse; }
+
+th,
+td {
+  padding: 0 0.8em;
+  text-align: center;
+  border: 1px solid #aaa; }
+div.img img {
+  width: 75%; }
+</style> 
+    </body></html>

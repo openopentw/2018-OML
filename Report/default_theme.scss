@@ -1,0 +1,101 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css';
+
+/* page */
+
+@page {
+  margin: 2cm;
+}
+
+/* overall */
+
+html {
+  font-family: "CMU Serif", "Times New Roman", "標楷體", "微軟正黑體";
+}
+
+/* titles */
+
+h1 {
+  font-weight: normal;
+}
+
+h2,
+h3,
+h4 {
+  // font-weight: normal;
+}
+
+h1 {
+  text-align: center;
+
+  margin-top: 3em;
+  font-size: 1.8em;
+}
+
+h2 {
+  margin-top: 1em;
+}
+
+/* subtitle */
+
+div.subtitle {
+  margin-bottom: 3em;
+
+  div {
+    font-size: 1.2em;
+    text-align: center;
+    margin: 0.7em;
+  }
+}
+
+/* img */
+
+div.img {
+  text-align: center;
+
+  img {
+    width: 50%;
+  }
+}
+
+/* paragraph */
+
+p {
+  text-indent: 2em;
+}
+
+/* list */
+
+ul {
+  margin-bottom: 1em;
+
+  li {
+    margin: 0.5em 0;
+  }
+}
+
+/* codes */
+
+pre {
+  border: 1px solid #aaa;
+  padding: 5px;
+
+  font-size: 1.2em;
+
+  page-break-inside: avoid;
+}
+
+/* table */
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0 0.8em;
+
+  text-align: center;
+
+  border: 1px solid #aaa;
+}

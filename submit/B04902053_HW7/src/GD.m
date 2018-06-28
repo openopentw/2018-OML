@@ -1,10 +1,10 @@
-function weight = gradient_descent_line_search(y, X)
+function weight = GD(y, X)
     [~, m] = size(X);
 
     %% parameters
     verbose = 1;
     max_iters = 10000;
-    max_alpha_iters = 1000;
+    max_alpha_iters = 100;
     w_0 = zeros(m, 1);
     yeta = 1e-2;
     C = 1e-1;
@@ -20,7 +20,9 @@ function weight = gradient_descent_line_search(y, X)
     f_w = 1 / 2 * (w' * w) + C * sum(log(1 + exp(- y .* X_w)));
     grad_f_w = w + C * (X' * ((1 ./ (1 + exp(- y .* X_w)) - 1) .* y));
     stop_cond_2 = (epsilon ^ 2) * (grad_f_w' * grad_f_w);
+    disp(stop_cond_2);
 
+    disp("[iter, iter_alpha, (grad_f_w' * grad_f_w), f_w]");
     for iter = 1: max_iters
         %% calculate direction s
         s = - grad_f_w;
@@ -48,13 +50,13 @@ function weight = gradient_descent_line_search(y, X)
         % calculate grad(f(w)) for next iter
         f_w = 1 / 2 * (w' * w) + C * sum(log(1 + exp(- y .* X_w)));
         grad_f_w = w + C * (X' * ((1 ./ (1 + exp(- y .* X_w)) - 1) .* y));
-        if grad_f_w' * grad_f_w < stop_cond_2
-            break
-        end
 
         if verbose
-            disp([iter, iter_alpha, (grad_f_w' * grad_f_w / stop_cond_2)]);
-            disp(f_w);
+            disp([iter, iter_alpha, (grad_f_w' * grad_f_w), f_w]);
+        end
+
+        if grad_f_w' * grad_f_w < stop_cond_2
+            break
         end
     end
     weight = w;

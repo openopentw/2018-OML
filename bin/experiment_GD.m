@@ -1,5 +1,4 @@
-FILENAME = '../data/kddb';
-% FILENAME = '../data/kddb.t';
+FILENAME = 'kddb';
 
 tic;
 [y, X] = libsvmread(FILENAME);
@@ -10,13 +9,10 @@ disp('Finish loading data.');
 y = y * 2 - 1;
 
 tic;
-w = gradient_descent_line_search(y, X);
+w = GD(y, X);
 toc
 
 %% evaluate the result
 C = 1e-1;
 err = 1 / 2 * (w' * w) + C * sum(log(1 + exp(- y .* (X * w))));
 disp(err);
-
-%% save results
-save('./err.mat', 'err');

@@ -1,0 +1,121 @@
+h1 Optimization and Machine Learning - HW7
+div.subtitle
+  div b04902053 鄭淵仁
+  div June 28, 2018
+
+h2 Environment
+div
+  ul
+    li <b>OS:</b> CSIE Workstation (Archlinux)
+    li <b>Programming Language:</b> Matlab R2018a
+
+h2 Results
+h3 Timing
+div
+  table
+    thead
+      tr
+        th Gradient Descent
+        th Newton Method
+        th LIBLINEAR
+    tbody
+      tr
+        td 44m41.889s
+        td 10m45.581s
+        td 21m19.126s
+  p As you can see in the table, the Newton Method is the fastest. LIBLINEAR runs the second. And Gradient Descent is far slower than the two.
+  p I think that's because Newton Method is written in Matlab, which has been studying the matrix computation for many years. While LIBLINEAR is written in C.
+  p Moreover, Matlab may use parallel programming to speed up the computation, while the LIBLINEAR which I download is the single thread version. Therefore, there is no surprise that Newton Method is faster than LIBLINEAR.
+  p Finally, Gradient Descent does not always determining the best direction, so it is far slower than the other two method.
+div(style="page-break-before:always")
+h3 Loss
+div
+  table
+    thead
+      tr
+        th Loss of Gradient Descent
+        th Loss of Newton Method
+    tbody
+      tr
+        td
+          div.img
+            img(src='./assets/images/GD_loss.png', style="width:100%")
+        td
+          div.img
+            img(src='./assets/images/NM_loss.png', style="width:100%")
+    thead
+      tr
+        th Loss of LIBLINEAR
+    tbody
+      tr
+        td
+          div.img
+            img(src='./assets/images/LIBLINEAR_loss.png', style="width:100%")
+  p From the above graphs, we can find that the loss of LIBLINEAR is the smallest. And that of Newton Method is larger than LIBLINEAR. While the loss of Gradient Descent is far larger than the other two.
+  p I think that may be because that trust region causes less numerical error than conjugate gradient. Besides, my implementation may cause more errors because I am not an expert in numerical.
+div(style="page-break-before:always")
+h3 Norm of Gradient
+div
+  table
+    thead
+      tr
+        th Norm of Gradient of the first 30 iterations of Gradient Descent
+        th Norm of Gradient of the last 30 iterations of Gradient Descent
+    tbody
+      tr
+        td
+          div.img
+            img(src='./assets/images/GD_norm of gradient_at first.png', style="width:100%")
+        td
+          div.img
+            img(src='./assets/images/GD_norm of gradient_at last.png', style="width:100%")
+    thead
+      tr
+        th Norm of Gradient of Newton Method
+        th Norm of Gradient of LIBLINEAR
+    tbody
+      tr
+        td
+          div.img
+            img(src='./assets/images/NM_norm of gradient.png', style="width:100%")
+        td
+          div.img
+            img(src='./assets/images/LIBLINEAR_norm of gradient.png', style="width:100%")
+  p I find that the norms of gradients of the Gradient Descent do not fluently decrease, while the others decline steady.
+  p I think this shows that Gradient Descent does not always choose a better direction in comparison to the other two methods (that is, Gradient Descent always regret the direction that it has chosen before). Therefore, Newton Method is far slower than the other two.
+div(style="page-break-before:always")
+h3 Alpha of Newton Method
+div
+  div.img
+    img(src='./assets/images/NM_iter of alpha.png', style="width: 50%")
+  p As you can see in the graph, the alphas of Newton Method are always 1, just as the slides say.
+
+h2 Conclusion
+div
+  ol
+    li Newton Method written in Matlab is faster than LIBLINEAR, while LIBLINEAR is more accurate than Newton Method.
+    li Matlab may be faster than C because of the algorithm behind matrix computation (such as parallel programming.)
+    li Trust region may cause less numerical error than conjugate gradient. And the algorithm written by me may make the error larger.
+    li Gradient Descent does not always choose a better direction in comparison to the other two methods. Therefore, Newton Method is far slower than the other two.
+
+template#page-header
+  div
+
+template#page-footer
+  style(type='text/css').
+    .pdfheader {
+      width: 1000px;
+      text-align: center;
+      margin-bottom: 5px;
+
+      font-size: 12px;
+      color: #aaa;
+      font-family: "CMU Serif", "Times New Roman", "標楷體", "微軟正黑體";
+      font-weight: bold;
+    }
+
+  .pdfheader #[span.pageNumber]
+
+style
+  include:scss ./default_theme.scss
+  include:scss ./Report_final.scss

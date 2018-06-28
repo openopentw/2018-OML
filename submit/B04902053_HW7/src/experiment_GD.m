@@ -9,7 +9,7 @@ disp('Finish loading data.');
 y = y * 2 - 1;
 
 tic;
-w = NM(y, X);
+w = GD(y, X);
 toc
 
 %% evaluate the result

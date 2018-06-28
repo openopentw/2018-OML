@@ -9,10 +9,12 @@ disp('Finish loading data.');
 y = y * 2 - 1;
 
 tic;
-w = NM(y, X);
+model = train(y, X, '-s 0');
+toc
+
+tic;
+[predicted_label, accuracy, decision_values] = predict(y, X, model);
 toc
 
 %% evaluate the result
-C = 1e-1;
-err = 1 / 2 * (w' * w) + C * sum(log(1 + exp(- y .* (X * w))));
-disp(err);
+disp(accuracy);

@@ -1,0 +1,33 @@
+b04902053 bin $ time matlab -r "run experiment_LIBLINEAR.m ; exit"
+MATLAB is selecting SOFTWARE OPENGL rendering.
+
+                                                                          < M A T L A B (R) >
+                                                                Copyright 1984-2017 The MathWorks, Inc.
+                                                                 R2017a (9.2.0.538062) 64-bit (glnxa64)
+                                                                           February 23, 2017
+
+
+To get started, type one of these: helpwin, helpdesk, or demo.
+For product information, visit www.mathworks.com.
+
+Elapsed time is 179.101057 seconds.
+Finish loading data.
+iter  1 act 6.894e+06 pre 6.180e+06 delta 1.366e+02 f 1.335e+07 |g| 3.137e+06 CG   5
+cg reaches trust region boundary
+iter  2 act 1.187e+06 pre 9.910e+05 delta 5.465e+02 f 6.458e+06 |g| 6.088e+05 CG   7
+cg reaches trust region boundary
+iter  3 act 1.202e+06 pre 1.081e+06 delta 2.186e+03 f 5.271e+06 |g| 2.281e+05 CG  18
+iter  4 act 5.016e+05 pre 4.741e+05 delta 2.186e+03 f 4.070e+06 |g| 1.387e+05 CG  46
+iter  5 act 3.098e+04 pre 2.773e+04 delta 2.186e+03 f 3.568e+06 |g| 4.310e+04 CG  36
+iter  6 act 6.280e+03 pre 5.751e+03 delta 2.186e+03 f 3.537e+06 |g| 6.912e+03 CG  62
+Elapsed time is 1003.792465 seconds.
+Accuracy = 94.9562% (18292445/19264097)
+Elapsed time is 78.914298 seconds.
+   94.9562
+    0.2018
+    0.6010
+
+
+real    21m19.126s
+user    19m36.484s
+sys     1m35.895s

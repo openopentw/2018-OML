@@ -1,0 +1,9 @@
+@mixin add_counter ($sel, $base_sel) {
+  #{$base_sel} {
+    counter-reset: #{$sel};
+  }
+  #{$sel}:before {
+    counter-increment: #{$sel};
+    content: "" counter(#{$sel}) ". ";
+  }
+}
